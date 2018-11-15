@@ -28,10 +28,13 @@ public class IcePlanet : MonoBehaviour
         {
             orbit = false;
             speed = Mathf.Abs(speed);
-            Debug.Log("<color=blue>SPACE PRESSED : </color>" + direction );
+            transform.rotation = Quaternion.identity; 
+            Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
         }
         else if(!orbit){
-            // Debug.Log("<color=white>Translate : </color>" + direction + "<color=white> Speed : </color>" + speed);
+            Debug.Log("<color=white>Translate : </color>" + direction + "<color=white> Speed : </color>" + speed);
+            Debug.Log("<color=pink>orbit : </color>" + orbit);
+            // transform.Translate(direction * speed * Time.deltaTime);
             transform.Translate(direction * speed * Time.deltaTime);
          }
          else
@@ -47,7 +50,7 @@ public class IcePlanet : MonoBehaviour
             else {
                 tempDirection = orbitPlanet.transform.position - transform.position;
             }
-            direction = Vector2.Perpendicular(tempDirection);
+            direction = Vector2.Perpendicular(tempDirection).normalized;
             // Debug.Log("<color=yellow>Rotate Around : </color>" + direction + "<color=yellow> Speed : </color>" + speed);
          }
      }
