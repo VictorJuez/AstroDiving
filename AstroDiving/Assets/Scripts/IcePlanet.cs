@@ -15,6 +15,8 @@ public class IcePlanet : MonoBehaviour
     void Start()
     {
         orbit = false;
+        orbitPlanet = GameObject.Find("blue-planet").transform;
+        Debug.Log("<color=red>START STATEMENT : </color>" + orbitPlanet.transform.position);
     }
 
 
@@ -24,14 +26,27 @@ public class IcePlanet : MonoBehaviour
     }
  
      void FixedUpdate () {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && orbit) //Space pressed when orbiting so we want to exit the orbit
         {
             orbit = false;
             speed = Mathf.Abs(speed);
             transform.rotation = Quaternion.identity; 
             Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
         }
+
+        else if (Input.GetKeyDown(KeyCode.Space) && !orbit)//Space pressed when not orbiting so we want to reach nearest planet
+        {
+            Vector2 tmpDirection;
+            tmpDirection = transform.position - orbitPlanet.transform.position;
+            tmpDirection *= -1;
+            tmpDirection = (direction + tmpDirection).normalized;
+            tmpDirection = (direction + tmpDirection).normalized;
+            direction = (direction + tmpDirection).normalized;
+            Debug.Log("<color=red>CALCULATING BIRECTRIZ : </color>" + orbitPlanet.transform.position);
+
+        }
         else if(!orbit){
+            // No space pressed and astronaut is not in orbit so it has to keep straight
             Debug.Log("<color=white>Translate : </color>" + direction + "<color=white> Speed : </color>" + speed);
             Debug.Log("<color=pink>orbit : </color>" + orbit);
             // transform.Translate(direction * speed * Time.deltaTime);
@@ -39,7 +54,8 @@ public class IcePlanet : MonoBehaviour
          }
          else
          {
-            Vector2 tempDirection;
+            //No space pressed and astronaut is in orbit so it has to keep rotating
+            Vector2 tempDirection; //direction from astronaut to orbit planet.
             tempDirection = transform.position - orbitPlanet.transform.position;
 
             transform.RotateAround(orbitPlanet.transform.position, orbitPlanet.transform.forward, (180 * speed * Time.deltaTime /(Mathf.Abs(tempDirection.magnitude) * Mathf.PI)));
@@ -50,7 +66,7 @@ public class IcePlanet : MonoBehaviour
             else {
                 tempDirection = orbitPlanet.transform.position - transform.position;
             }
-            direction = Vector2.Perpendicular(tempDirection).normalized;
+            direction = Vector2.Perpendicular(tempDirection).normalized; //calculated the exit orbit direction in case we press space later.
             // Debug.Log("<color=yellow>Rotate Around : </color>" + direction + "<color=yellow> Speed : </color>" + speed);
          }
      }
