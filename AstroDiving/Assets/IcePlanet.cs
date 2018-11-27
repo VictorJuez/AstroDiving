@@ -21,7 +21,6 @@ public class IcePlanet : MonoBehaviour
 
         // Find all the objects with the "BlackHole" tag
         blackHoles = GameObject.FindGameObjectsWithTag("BlackHole");
-
     }
 
 
@@ -60,19 +59,22 @@ public class IcePlanet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BlackHole"))
         {
+            Debug.Log("<color=red>BLACK HOLE HITED : </color>" + other.gameObject.name);
             foreach (GameObject blackHole in blackHoles){
                 // Search for the other blackhole and teleport the player
                 if(!GameObject.ReferenceEquals(blackHole, other.gameObject)){
                     // Get the CircleCollider radius 
                     float blackHoleColliderRadius = blackHole.transform.GetComponent<CircleCollider2D>().radius;
-                    // Move the player to the other blackhole's center + his radius
-                    transform.position = blackHole.transform.position + Vector3.ClampMagnitude(direction, blackHoleColliderRadius);
+                    // Move the player to the other blackhole's center + his radius (works with object scale == 1)
+                    Vector3 offsetDirection = direction * blackHoleColliderRadius;
+                    transform.position = blackHole.transform.position + offsetDirection;
                     break;
                 }
             }
         }
-        else{
-            Debug.Log("<color=red>PLANET ORBITE HITED : </color>" + other.gameObject.name);
+        else if (other.gameObject.CompareTag("Planet"))
+            {
+            Debug.Log("<color=red>PLANET HITED : </color>" + other.gameObject.name);
             orbitPlanet = other.gameObject.transform;
             orbitAngle = other.contacts[0].normal;
             float collisionAngle = Vector2.SignedAngle(direction, orbitAngle);
