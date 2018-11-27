@@ -29,7 +29,7 @@ public class IcePlanet : MonoBehaviour
     void Update()
     {
           if(!orbit){
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(direction * speed * Time.deltaTime, Space.World);
          }
          else
          {
@@ -37,7 +37,6 @@ public class IcePlanet : MonoBehaviour
             {
                 orbit = false;
                 speed = Mathf.Abs(speed);
-                transform.rotation = Quaternion.identity; 
                 Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
             }
             else{
