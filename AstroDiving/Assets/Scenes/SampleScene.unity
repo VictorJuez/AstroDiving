@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 258646388}
   m_Layer: 0
   m_Name: blue-planet (1)
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 1121167350}
   m_Layer: 0
   m_Name: blue-planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

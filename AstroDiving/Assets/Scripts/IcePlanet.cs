@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +11,30 @@ public class IcePlanet : MonoBehaviour
     private Vector2 orbitAngle;
     private Vector2 direction = new Vector2(1, 0);
     private Transform orbitPlanet;
+    private GameObject[] Planets;
 
     // Use this for initialization
     void Start()
     {
         orbit = false;
-        orbitPlanet = GameObject.Find("blue-planet").transform;
-        Debug.Log("<color=red>START STATEMENT : </color>" + orbitPlanet.transform.position);
+        Planets = GameObject.FindGameObjectsWithTag("Planet");
+        orbitPlanet = GetNearestPlanet();
+    }
+
+    private Transform GetNearestPlanet()
+    {
+        float minDistance = Vector2.Distance(transform.position, Planets[0].transform.position);
+        GameObject nearestPlanet = Planets[0];
+
+        for (int i = 1; i < Planets.Length; ++i){
+            float auxDistance = Vector2.Distance(transform.position, Planets[i].transform.position);
+            if (auxDistance < minDistance) {
+                minDistance = auxDistance;
+                nearestPlanet = Planets[i];
+            }
+        }
+
+        return nearestPlanet.transform;
     }
 
 
@@ -34,14 +52,20 @@ public class IcePlanet : MonoBehaviour
             Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
         }
 
-        else if (Input.GetKeyDown(KeyCode.Space) && !orbit)//Space pressed when not orbiting so we want to reach nearest planet
+        else if (Input.GetKey(KeyCode.Space) && !orbit)//Space pressed when not orbiting so we want to reach nearest planet
         {
+            orbitPlanet = GetNearestPlanet();
             Vector2 tmpDirection;
             tmpDirection = transform.position - orbitPlanet.transform.position;
             tmpDirection *= -1;
             tmpDirection = (direction + tmpDirection).normalized;
             tmpDirection = (direction + tmpDirection).normalized;
+            tmpDirection = (direction + tmpDirection).normalized;
+            tmpDirection = (direction + tmpDirection).normalized;
+
             direction = (direction + tmpDirection).normalized;
+
+            transform.Translate(direction * speed * Time.deltaTime);
             Debug.Log("<color=red>CALCULATING BIRECTRIZ : </color>" + orbitPlanet.transform.position);
 
         }
