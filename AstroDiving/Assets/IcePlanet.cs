@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IcePlanet : MonoBehaviour
 {
-    [Range(1f,10f)]
+    [Range(5f,20f)]
     public float speed;
 
     private bool orbit;
     private Vector2 orbitAngle;
-    private Vector2 direction = new Vector2(1, 0);
+    private Vector2 direction = new Vector2(1, 0).normalized;
     private Transform orbitPlanet;
 
     private GameObject[] blackHoles;
@@ -86,6 +86,14 @@ public class IcePlanet : MonoBehaviour
                     speed = Mathf.Abs(speed);
             }
             orbit = true;
+        }
+        else if (other.gameObject.CompareTag("Asteroid"))
+            {
+            Debug.Log("<color=red>ASTEROID HITED : </color>" + other.gameObject.name);
+                
+            orbitAngle = other.contacts[0].normal;
+            direction = Vector2.Reflect(direction, orbitAngle);
+
         }
     }
 }
