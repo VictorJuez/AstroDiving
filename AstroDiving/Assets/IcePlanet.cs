@@ -11,6 +11,13 @@ public class IcePlanet : MonoBehaviour
     private Vector2 direction = new Vector2(1, 0);
     private Transform orbitPlanet;
 
+    O2Controller O2Controller;
+
+    private void Awake()
+    {
+        O2Controller = GetComponent<O2Controller>();
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -27,6 +34,7 @@ public class IcePlanet : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             orbit = false;
+            O2Controller.SetOrbitingO2Planet(false);
             speed = Mathf.Abs(speed);
             transform.rotation = Quaternion.identity; 
             Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
@@ -69,5 +77,11 @@ public class IcePlanet : MonoBehaviour
                 speed = Mathf.Abs(speed);
         }
         orbit = true;
+
+        if (other.gameObject.CompareTag("OxigenPlanet"))
+        {
+            Debug.Log("oxigen");
+            O2Controller.SetOrbitingO2Planet(true);
+        }
     }
 }
