@@ -152,7 +152,9 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.AstroDiving.AstroDivingBeta
     Standalone: com.Company.ProductName
+    iOS: com.AstroDiving.AstroDivingBeta
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -393,6 +395,7 @@ PlayerSettings:
   switchAllowsVideoCapturing: 1
   switchAllowsRuntimeAddOnContentInstall: 0
   switchDataLossConfirmation: 0
+  switchUserAccountLockEnabled: 0
   switchSupportedNpadStyles: 3
   switchNativeFsCacheSize: 32
   switchIsHoldTypeHorizontal: 0
@@ -618,9 +621,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: b60a673c-176f-4097-89ee-ef31eab1550d
-  projectName: GravityTest
-  organizationId: tisboul
+  cloudProjectId: a98318f7-f82a-466c-a7d9-8408f26dc7f4
+  projectName: GravityTest (1)
+  organizationId: astrodiving
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
