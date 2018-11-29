@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 1278019755}
   m_Layer: 0
   m_Name: Home
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 1314569113}
   m_Layer: 0
   m_Name: Meteor_purple
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 1787997644}
   m_Layer: 0
   m_Name: Moon_yellow
-  m_TagString: Untagged
+  m_TagString: OxigenPlanet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 2124966043}
   m_Layer: 0
   m_Name: Meteor_purple (1)
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
