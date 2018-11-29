@@ -56,7 +56,8 @@ public class IcePlanet : MonoBehaviour
 
 
         if(!orbit){
-            if (Input.GetKey(KeyCode.Space)){
+            // Input.GetMouseButton(0) also captures touch input
+            if (Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(0)){
                 //This part is the one that redirects the direction when keep space pressed to reach a planet
                 Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
                 orbitPlanet = GetNearestPlanet();
@@ -76,7 +77,7 @@ public class IcePlanet : MonoBehaviour
          }
          else
          {
-             if (Input.GetKeyDown(KeyCode.Space))
+             if (Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0))
             {
                 orbit = false;
                 O2Controller.SetOrbitingO2Planet(false);
