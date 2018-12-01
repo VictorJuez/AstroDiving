@@ -36,5 +36,5 @@ sysinfo.txt
 *.unitypackage
 
 /AstroDiving/Builds/
-
+/Extra/
 .DS_Store
