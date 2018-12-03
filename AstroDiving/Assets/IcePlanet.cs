@@ -9,17 +9,18 @@ public class IcePlanet : MonoBehaviour
 
     private bool orbit;
     private Vector2 orbitAngle;
-    private Vector2 direction = new Vector2(1, 0).normalized;
     private Transform orbitPlanet;
+    private Vector2 direction = new Vector2(1, 0).normalized;
 
     private GameObject[] blackHoles;
-    private GameObject[] Planets;
 
     O2Controller O2Controller;
+    BoostController BoostController;
 
     private void Awake()
     {
         O2Controller = GetComponent<O2Controller>();
+        BoostController = GetComponent<BoostController>();
     }
 
     // Use this for initialization
@@ -29,57 +30,33 @@ public class IcePlanet : MonoBehaviour
 
         // Find all the objects with the "BlackHole" tag
         blackHoles = GameObject.FindGameObjectsWithTag("BlackHole");
-        Planets = GameObject.FindGameObjectsWithTag("Planet");
-        orbitPlanet = GetNearestPlanet();
-    }
-
-    private Transform GetNearestPlanet()
-    {
-        float minDistance = Vector2.Distance(transform.position, Planets[0].transform.position);
-        GameObject nearestPlanet = Planets[0];
-
-        for (int i = 1; i < Planets.Length; ++i){
-            float auxDistance = Vector2.Distance(transform.position, Planets[i].transform.position);
-            if (auxDistance < minDistance) {
-                minDistance = auxDistance;
-                nearestPlanet = Planets[i];
-            }
-        }
-
-        return nearestPlanet.transform;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
+        BoostController.SetBoostEnabled(false);
 
         if(!orbit){
             // Input.GetMouseButton(0) also captures touch input
-            if (Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(0)){
+            if ((Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(0)) && BoostController.ableToBoost()){
                 //This part is the one that redirects the direction when keep space pressed to reach a planet
-                Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
-                orbitPlanet = GetNearestPlanet();
-                Vector2 tmpDirection;
-                tmpDirection = transform.position - orbitPlanet.transform.position;
-                tmpDirection *= -1;
-                tmpDirection = (direction + tmpDirection).normalized;
-                tmpDirection = (direction + tmpDirection).normalized;
-                tmpDirection = (direction + tmpDirection).normalized;
-                tmpDirection = (direction + tmpDirection).normalized;
-
-                direction = (direction + tmpDirection).normalized;
-
+                //Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
+                BoostController.SetBoostEnabled(true);
+                direction = BoostController.calculateBoostDirection(direction);
                 transform.Translate(direction * speed * Time.deltaTime, Space.World);
             }
-            else transform.Translate(direction * speed * Time.deltaTime, Space.World);
+            else {
+                transform.Translate(direction * speed * Time.deltaTime, Space.World);
+            }
          }
          else
          {
              if (Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0))
             {
                 orbit = false;
+                BoostController.setTimeAux(BoostController.getTotalTime());
                 O2Controller.SetOrbitingO2Planet(false);
                 speed = Mathf.Abs(speed);
                 Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
