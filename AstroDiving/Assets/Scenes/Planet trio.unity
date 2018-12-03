@@ -447,7 +447,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8323903, y: 2.354571, z: -10}
+  m_LocalPosition: {x: -6.8567286, y: 2.354571, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -636,7 +636,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1171040319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8323903, y: 2.354571, z: -10}
+  m_LocalPosition: {x: -6.8567286, y: 2.354571, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1219018011}
@@ -1397,6 +1397,7 @@ GameObject:
   - component: {fileID: 1948495052}
   - component: {fileID: 1948495056}
   - component: {fileID: 1948495057}
+  - component: {fileID: 1948495058}
   m_Layer: 0
   m_Name: Valentina
   m_TagString: Untagged
@@ -1525,6 +1526,18 @@ MonoBehaviour:
   currentO2: 0
   O2Slider: {fileID: 162861225}
   fill: {fileID: 2070142795}
+--- !u!114 &1948495058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948495051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cb4f6256ed640188c1e860d0ceac02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: 0
 --- !u!1 &2070142793
 GameObject:
   m_ObjectHideFlags: 0
