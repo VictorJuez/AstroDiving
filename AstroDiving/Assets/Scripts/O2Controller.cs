@@ -36,8 +36,10 @@ public class O2Controller : MonoBehaviour
 
         if (currentO2 <= startingO2 / 2)
             fill.color = new Color(1f, 0.5f, 0f, 1f);
-        if (currentO2 <= startingO2 / 4)
+        else if (currentO2 <= startingO2 / 4)
             fill.color = Color.red;
+        else
+            fill.color = Color.green;
     }
     
     public void SetOrbitingO2Planet(bool orbitingO2Planet)
