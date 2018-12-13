@@ -8,6 +8,7 @@ TagManager:
   - Planet
   - Asteroid
   - OxigenPlanet
+  - HomePlanet
   layers:
   - Default
   - TransparentFX

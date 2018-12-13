@@ -34,10 +34,10 @@ public class O2Controller : MonoBehaviour
 
         O2Slider.value = currentO2;
 
-        if (currentO2 <= startingO2 / 2)
-            fill.color = new Color(1f, 0.5f, 0f, 1f);
-        else if (currentO2 <= startingO2 / 4)
+        if (currentO2 <= startingO2 / 4)
             fill.color = Color.red;
+        else if (currentO2 <= startingO2 / 2)
+            fill.color = new Color(1f, 0.5f, 0f, 1f);
         else
             fill.color = Color.green;
     }
@@ -47,5 +47,9 @@ public class O2Controller : MonoBehaviour
         this.orbitingO2Planet = orbitingO2Planet;
     }
 
+    public bool O2IsGone()
+    {
+        return currentO2 <= 0;
+    }
 }
 

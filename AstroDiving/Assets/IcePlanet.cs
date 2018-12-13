@@ -11,6 +11,7 @@ public class IcePlanet : MonoBehaviour
     private Vector2 orbitAngle;
     private Transform orbitPlanet;
     private Vector2 direction = new Vector2(1, 0).normalized;
+    private bool gotHome;
 
     private GameObject[] blackHoles;
 
@@ -21,6 +22,7 @@ public class IcePlanet : MonoBehaviour
     {
         O2Controller = GetComponent<O2Controller>();
         BoostController = GetComponent<BoostController>();
+        gotHome = false;
     }
 
     // Use this for initialization
@@ -37,6 +39,12 @@ public class IcePlanet : MonoBehaviour
     void Update()
     {
         BoostController.SetBoostEnabled(false);
+
+        if (O2Controller.O2IsGone())
+        {
+            Debug.Log("O2 is gone");
+            return;
+        }
 
         if(!orbit){
             // Input.GetMouseButton(0) also captures touch input
@@ -80,6 +88,9 @@ public class IcePlanet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.CompareTag("HomePlanet"))
+            gotHome = true;
+
         if (other.gameObject.CompareTag("BlackHole"))
         {
             Debug.Log("<color=red>BLACK HOLE HITED : </color>" + other.gameObject.name);
@@ -95,7 +106,7 @@ public class IcePlanet : MonoBehaviour
                 }
             }
         }
-        else if (other.gameObject.CompareTag("Planet") || other.gameObject.CompareTag("OxigenPlanet"))
+        else if (other.gameObject.CompareTag("Planet") || other.gameObject.CompareTag("OxigenPlanet") || other.gameObject.CompareTag("HomePlanet"))
             {
             Debug.Log("<color=red>PLANET HITED : </color>" + other.gameObject.name);
             orbitPlanet = other.gameObject.transform;
@@ -124,5 +135,10 @@ public class IcePlanet : MonoBehaviour
             direction = Vector2.Reflect(direction, orbitAngle);
 
         }
+    }
+
+    public bool GotHome()
+    {
+        return gotHome;
     }
 }

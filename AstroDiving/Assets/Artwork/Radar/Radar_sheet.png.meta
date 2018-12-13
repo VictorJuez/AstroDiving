@@ -91,10 +91,10 @@ TextureImporter:
       name: Radar_sheet_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 426
-        width: 324
-        height: 324
+        x: 112
+        y: 570
+        width: 137
+        height: 136
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -102,7 +102,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6deba0d4b90741a9bb5c9c260b137cb
+      spriteID: 8ba99a6ad715e164d8b9aa41422ac138
       vertices: []
       indices: 
       edges: []
@@ -111,10 +111,10 @@ TextureImporter:
       name: Radar_sheet_1
       rect:
         serializedVersion: 2
-        x: 374
-        y: 426
-        width: 324
-        height: 324
+        x: 459
+        y: 514
+        width: 255
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8d27d4f59765418bbc4cd34e9d3428b
+      spriteID: d9ba8d8cafbb5364a9f4b94c6a1e0b8f
       vertices: []
       indices: 
       edges: []
@@ -131,10 +131,10 @@ TextureImporter:
       name: Radar_sheet_2
       rect:
         serializedVersion: 2
-        x: 20
-        y: 22
-        width: 324
-        height: 324
+        x: 0
+        y: 0
+        width: 362
+        height: 353
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ae30eb82e2fb48a28670164ed6dbad9
+      spriteID: 1d392c722eb89d44daac4835e0d08904
       vertices: []
       indices: 
       edges: []
@@ -151,10 +151,10 @@ TextureImporter:
       name: Radar_sheet_3
       rect:
         serializedVersion: 2
-        x: 374
-        y: 22
-        width: 324
-        height: 324
+        x: 459
+        y: 52
+        width: 255
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,7 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b64df098cb779403f969d8898f6b38ea
+      spriteID: 44b39f1993476194285f06ffe0587f0b
       vertices: []
       indices: 
       edges: []
