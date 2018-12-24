@@ -48,7 +48,7 @@ public class IcePlanet : MonoBehaviour
 
         if(!orbit){
             // Input.GetMouseButton(0) also captures touch input
-            if ((Input.GetKey(KeyCode.Space)|| Input.GetMouseButtonDown(0)) && BoostController.ableToBoost()){
+            if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0)) && BoostController.ableToBoost()){
                 //This part is the one that redirects the direction when keep space pressed to reach a planet
                 //Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
                 BoostController.SetBoostEnabled(true);
