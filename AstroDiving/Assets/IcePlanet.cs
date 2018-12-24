@@ -12,6 +12,7 @@ public class IcePlanet : MonoBehaviour
     private Transform orbitPlanet;
     private Vector2 direction = new Vector2(1, 0).normalized;
     private bool gotHome;
+    private float speedAux;
 
     private GameObject[] blackHoles;
 
@@ -23,6 +24,7 @@ public class IcePlanet : MonoBehaviour
         O2Controller = GetComponent<O2Controller>();
         BoostController = GetComponent<BoostController>();
         gotHome = false;
+        speedAux = speed;
     }
 
     // Use this for initialization
@@ -39,6 +41,7 @@ public class IcePlanet : MonoBehaviour
     void Update()
     {
         BoostController.SetBoostEnabled(false);
+        speedBoost();
 
         if (O2Controller.O2IsGone())
         {
@@ -52,6 +55,7 @@ public class IcePlanet : MonoBehaviour
                 //This part is the one that redirects the direction when keep space pressed to reach a planet
                 //Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
                 BoostController.SetBoostEnabled(true);
+                speed *=2;
                 direction = BoostController.calculateBoostDirection(direction);
                 transform.Translate(direction * speed * Time.deltaTime, Space.World);
             }
@@ -135,6 +139,11 @@ public class IcePlanet : MonoBehaviour
             direction = Vector2.Reflect(direction, orbitAngle);
 
         }
+    }
+
+    public void speedBoost(){
+        if(speed > speedAux) speed/=(float)1.1;
+        else speed = speedAux;
     }
 
     public bool GotHome()
