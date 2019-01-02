@@ -30,7 +30,7 @@ public class BoostController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		totalTime += Time.deltaTime;
-		if (boostEnabled) O2Controller.currentO2 -= 3 * Time.deltaTime;
+		if (boostEnabled) O2Controller.currentO2 -= 20 * Time.deltaTime;
 
 	}
 
@@ -69,9 +69,6 @@ public class BoostController : MonoBehaviour {
 		tmpDirection = transform.position - nearestPlanet.transform.position;
 		tmpDirection *= -1;
 		float angle = Vector2.Angle(direction, tmpDirection);
-		tmpDirection = (direction + tmpDirection).normalized;
-		tmpDirection = (direction + tmpDirection).normalized;
-		tmpDirection = (direction + tmpDirection).normalized;
 		tmpDirection = (direction + tmpDirection).normalized;
 
 		//Debug.Log("<color=green>ANGLE: </color>"  + angle);
