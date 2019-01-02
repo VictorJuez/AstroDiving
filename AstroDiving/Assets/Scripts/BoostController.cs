@@ -68,7 +68,7 @@ public class BoostController : MonoBehaviour {
 		Vector2 tmpDirection;
 		tmpDirection = transform.position - nearestPlanet.transform.position;
 		tmpDirection *= -1;
-		float angle = Vector2.Angle(direction, tmpDirection);
+		//float angle = Vector2.Angle(direction, tmpDirection);
 		tmpDirection = (direction + tmpDirection).normalized;
 
 		//Debug.Log("<color=green>ANGLE: </color>"  + angle);
