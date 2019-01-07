@@ -11,12 +11,14 @@ public class O2Controller : MonoBehaviour
     public Image fill;
 
     private bool orbitingO2Planet;
-    
+    private bool outsideBoundaries;
+
     private void Awake()
     {
         currentO2 = startingO2;
         O2Slider.maxValue = startingO2;
         orbitingO2Planet = false;
+        outsideBoundaries = false;
     }
 
     // Use this for initialization
@@ -40,6 +42,9 @@ public class O2Controller : MonoBehaviour
             fill.color = new Color(1f, 0.5f, 0f, 1f);
         else
             fill.color = Color.green;
+
+        if (outsideBoundaries)
+            currentO2 -= 5 * Time.deltaTime;
     }
     
     public void SetOrbitingO2Planet(bool orbitingO2Planet)
@@ -50,6 +55,16 @@ public class O2Controller : MonoBehaviour
     public bool O2IsGone()
     {
         return currentO2 <= 0;
+    }
+
+    public void SetOutsideBoundaries(bool outsideBoundaries)
+    {
+        this.outsideBoundaries = outsideBoundaries;
+    }
+
+    public bool GetOutsideBoundaries()
+    {
+        return outsideBoundaries;
     }
 }
 

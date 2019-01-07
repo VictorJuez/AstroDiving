@@ -9,6 +9,7 @@ TagManager:
   - Asteroid
   - OxigenPlanet
   - HomePlanet
+  - Boundary
   layers:
   - Default
   - TransparentFX

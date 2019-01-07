@@ -16,7 +16,7 @@ public class IcePlanet : MonoBehaviour
     private Vector2 direction = new Vector2(1, 0).normalized;
     private bool gotHome;
     private float speedAux;
-
+    private Vector3 previousPosition = Vector3.zero;
 
     private GameObject[] blackHoles;
 
@@ -46,6 +46,7 @@ public class IcePlanet : MonoBehaviour
     {
         BoostController.SetBoostEnabled(false);
         speedBoost();
+        previousPosition = transform.position;
 
         if (O2Controller.O2IsGone())
         {
@@ -92,6 +93,11 @@ public class IcePlanet : MonoBehaviour
                 direction = Vector2.Perpendicular(tempDirection).normalized;
             }
          }
+
+        // Orient the player's image to the direction it is moving
+        Vector3 dir = previousPosition - transform.position;
+        float rotationAngle = Vector3.SignedAngle(dir.normalized, Vector3.right, Vector3.forward);
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, -rotationAngle + 90));
     }
 
     void Orbit()
@@ -154,6 +160,16 @@ public class IcePlanet : MonoBehaviour
             orbitAngle = other.contacts[0].normal;
             direction = Vector2.Reflect(direction, orbitAngle);
 
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D otherObject)
+    {
+        if (otherObject.gameObject.CompareTag("Boundary"))
+        {
+            //O2Controller.SetOutsideBoundaries(!O2Controller.GetOutsideBoundaries());
+            O2Controller.SetOutsideBoundaries(true);
+            Debug.Log("OutsideBoundaries:" + O2Controller.GetOutsideBoundaries());
         }
     }
 
