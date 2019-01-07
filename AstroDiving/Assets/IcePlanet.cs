@@ -10,9 +10,13 @@ public class IcePlanet : MonoBehaviour
     private bool orbit;
     private Vector2 orbitAngle;
     private Transform orbitPlanet;
+
+    private Vector3 relativeDistance;
+
     private Vector2 direction = new Vector2(1, 0).normalized;
     private bool gotHome;
     private float speedAux;
+
 
     private GameObject[] blackHoles;
 
@@ -77,7 +81,7 @@ public class IcePlanet : MonoBehaviour
                 Vector2 tempDirection;
                 tempDirection = transform.position - orbitPlanet.transform.position;
 
-                transform.RotateAround(orbitPlanet.transform.position, orbitPlanet.transform.forward, (180 * speed * Time.deltaTime /(Mathf.Abs(tempDirection.magnitude) * Mathf.PI)));
+                Orbit();
 
                 if (speed > 0) {
                     tempDirection = transform.position - orbitPlanet.transform.position;
@@ -89,6 +93,16 @@ public class IcePlanet : MonoBehaviour
             }
          }
     }
+
+    void Orbit()
+     {
+        //  Vector3 tempDist = relativeDistance;
+        // Keep us at the last known relative position
+        transform.position = orbitPlanet.transform.position + relativeDistance;
+        transform.RotateAround(orbitPlanet.transform.position, orbitPlanet.transform.forward, (180 * speed * Time.deltaTime /(Mathf.Abs(relativeDistance.magnitude) * Mathf.PI)));
+        // Reset relative position after rotate
+        relativeDistance = transform.position - orbitPlanet.transform.position;
+     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -114,6 +128,8 @@ public class IcePlanet : MonoBehaviour
             {
             Debug.Log("<color=red>PLANET HITED : </color>" + other.gameObject.name);
             orbitPlanet = other.gameObject.transform;
+            relativeDistance = transform.position - orbitPlanet.transform.position;
+
             orbitAngle = other.contacts[0].normal;
             float collisionAngle = Vector2.SignedAngle(direction, orbitAngle);
             
