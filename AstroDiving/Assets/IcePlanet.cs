@@ -6,6 +6,8 @@ public class IcePlanet : MonoBehaviour
 {
     [Range(5f,20f)]
     public float speed;
+    public LoseMenu loseMenu;
+    public WinMenu winMenu;
 
     private bool orbit;
     private Vector2 orbitAngle;
@@ -38,6 +40,8 @@ public class IcePlanet : MonoBehaviour
 
         // Find all the objects with the "BlackHole" tag
         blackHoles = GameObject.FindGameObjectsWithTag("BlackHole");
+
+        Time.timeScale = 1f;
     }
 
 
@@ -50,7 +54,7 @@ public class IcePlanet : MonoBehaviour
 
         if (O2Controller.O2IsGone())
         {
-            Debug.Log("O2 is gone");
+            loseMenu.Activate();
             return;
         }
 
@@ -113,7 +117,10 @@ public class IcePlanet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("HomePlanet"))
+        {
             gotHome = true;
+            winMenu.Activate();
+        }
 
         if (other.gameObject.CompareTag("BlackHole"))
         {
