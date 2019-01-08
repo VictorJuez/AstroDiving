@@ -11,12 +11,23 @@ public class BoostController : MonoBehaviour {
 
 	private bool boostEnabled;
 
-	private GameObject[] Planets;
+	private GameObject[] Planets, Planet, HomePlanet, OxygenPlanet;
 
 	void Awake(){
 		timeAux = 0;
 		totalTime = 0;
-		Planets = GameObject.FindGameObjectsWithTag("Planet");
+		Planet = GameObject.FindGameObjectsWithTag("Planet");
+		HomePlanet = GameObject.FindGameObjectsWithTag("HomePlanet");
+		OxygenPlanet = GameObject.FindGameObjectsWithTag("OxigenPlanet");
+		
+		var list = new List<GameObject>();
+        list.AddRange(Planet);
+        list.AddRange(HomePlanet);
+		list.AddRange(OxygenPlanet);
+
+        // ::: Call ToArray to convert List to array
+        Planets = list.ToArray();
+		
 		nearestPlanet = GetNearestPlanet();
 		boostEnabled = false;
 		O2Controller = GetComponent<O2Controller>();
