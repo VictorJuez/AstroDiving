@@ -18,12 +18,12 @@ public class O2Controller : MonoBehaviour
         currentO2 = startingO2;
         O2Slider.maxValue = startingO2;
         orbitingO2Planet = false;
-        outsideBoundaries = false;
     }
 
     // Use this for initialization
     void Start()
     {
+        outsideBoundaries = false;
     }
 
     // Update is called once per frame
