@@ -12,14 +12,16 @@ public class LoseMenu : MonoBehaviour {
     {
         Time.timeScale = 0f;
         loseMenuUI.SetActive(true);
-        pauseButton.SetActive(false);
     }
 
     public void Replay()
     {
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
+        Time.timeScale = 1;
+        pauseButton.SetActive(true);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Time.timeScale = 1f;
     }
 
     public void LoadMenu()

@@ -40,6 +40,8 @@ public class IcePlanet : MonoBehaviour
 
         // Find all the objects with the "BlackHole" tag
         blackHoles = GameObject.FindGameObjectsWithTag("BlackHole");
+
+        Time.timeScale = 1f;
     }
 
 
