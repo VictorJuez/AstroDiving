@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38b01d59530b0a4499190ff675c5038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingO2: 20
+  startingO2: 30
   currentO2: 0
   O2Slider: {fileID: 1096934835}
   fill: {fileID: 1609104280}
@@ -4556,7 +4556,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 966597764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.094702244, y: -0.9954288, z: -10}
+  m_LocalPosition: {x: 0.09467983, y: -0.9954288, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2006919788}
@@ -7529,7 +7529,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1679009894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.094702244, y: -0.9954288, z: -10}
+  m_LocalPosition: {x: 0.09467983, y: -0.9954288, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

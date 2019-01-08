@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38b01d59530b0a4499190ff675c5038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingO2: 20
+  startingO2: 40
   currentO2: 0
   O2Slider: {fileID: 1263893944}
   fill: {fileID: 1718436662}
@@ -11442,7 +11442,7 @@ GameObject:
   - component: {fileID: 1934700929}
   m_Layer: 0
   m_Name: P_8 (2)
-  m_TagString: OxigenPlanet
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

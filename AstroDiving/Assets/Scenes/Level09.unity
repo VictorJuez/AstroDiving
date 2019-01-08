@@ -914,7 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38b01d59530b0a4499190ff675c5038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingO2: 20
+  startingO2: 30
   currentO2: 0
   O2Slider: {fileID: 1096934835}
   fill: {fileID: 1609104280}
