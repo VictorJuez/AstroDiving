@@ -181,7 +181,8 @@ public class IcePlanet : MonoBehaviour
     }
 
     public void speedBoost(){
-        if(speed > speedAux) speed/=(float)1.1;
+        if (speed<0);
+        else if(speed > speedAux) speed/=(float)1.1;
         else speed = speedAux;
     }
 
