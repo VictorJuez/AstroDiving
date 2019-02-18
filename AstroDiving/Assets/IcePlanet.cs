@@ -24,11 +24,14 @@ public class IcePlanet : MonoBehaviour
 
     O2Controller O2Controller;
     BoostController BoostController;
+    SmokeController SmokeController;
 
     private void Awake()
     {
         O2Controller = GetComponent<O2Controller>();
         BoostController = GetComponent<BoostController>();
+        SmokeController = GetComponent<SmokeController>();
+
         gotHome = false;
         speedAux = speed;
     }
@@ -67,6 +70,7 @@ public class IcePlanet : MonoBehaviour
                 speed *=2;
                 direction = BoostController.calculateBoostDirection(direction);
                 transform.Translate(direction * speed * Time.deltaTime, Space.World);
+                SmokeController.enableSmoke();
             }
             else {
                 transform.Translate(direction * speed * Time.deltaTime, Space.World);
