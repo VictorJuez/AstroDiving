@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -37,4 +38,18 @@ public class PauseMenu : MonoBehaviour {
         Debug.Log("Quitting game");
         Application.Quit();
     }
+
+    public void ZoomInOut() {
+		var camera = Camera.main;
+		var brain = (camera == null) ? null : camera.GetComponent<CinemachineBrain>();
+		var vcam = (brain == null) ? null : brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+		if (vcam != null){
+            if (vcam.m_Lens.OrthographicSize == 5){
+                vcam.m_Lens.OrthographicSize = 20;
+            } else if (vcam.m_Lens.OrthographicSize == 20){
+                vcam.m_Lens.OrthographicSize = 5;
+            }
+			
+		}
+	}
 }
