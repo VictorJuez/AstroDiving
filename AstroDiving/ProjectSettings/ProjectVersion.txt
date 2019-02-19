@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 m_EditorVersion: 2018.2.17f1
+=======
+m_EditorVersion: 2018.2.14f1
+>>>>>>> 984d91aaed6688d51f7e3ef9c75f59d23f0ff7ce

@@ -10,6 +10,7 @@ TagManager:
   - OxigenPlanet
   - HomePlanet
   - Boundary
+  - Smoke
   layers:
   - Default
   - TransparentFX
