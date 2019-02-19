@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class IcePlanet : MonoBehaviour
 {
@@ -64,13 +65,19 @@ public class IcePlanet : MonoBehaviour
         if(!orbit){
             // Input.GetMouseButton(0) also captures touch input
             if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0)) && BoostController.ableToBoost()){
-                //This part is the one that redirects the direction when keep space pressed to reach a planet
-                //Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
-                BoostController.SetBoostEnabled(true);
-                speed *=2;
-                direction = BoostController.calculateBoostDirection(direction);
-                transform.Translate(direction * speed * Time.deltaTime, Space.World);
-                SmokeController.enableSmoke();
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    Debug.Log("Clicked on the buttons");
+                }
+                else {
+                    //This part is the one that redirects the direction when keep space pressed to reach a planet
+                    //Debug.Log("<color=blue>SPACE PRESSED changing trajectory: </color>"  + direction + "<color=blue> Speed : </color>" + speed );
+                    BoostController.SetBoostEnabled(true);
+                    speed *=2;
+                    direction = BoostController.calculateBoostDirection(direction);
+                    transform.Translate(direction * speed * Time.deltaTime, Space.World);
+                    SmokeController.enableSmoke();
+                }
             }
             else {
                 transform.Translate(direction * speed * Time.deltaTime, Space.World);
@@ -80,11 +87,17 @@ public class IcePlanet : MonoBehaviour
          {
              if (Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0))
             {
-                orbit = false;
-                BoostController.setTimeAux(BoostController.getTotalTime());
-                O2Controller.SetOrbitingO2Planet(false);
-                speed = Mathf.Abs(speed);
-                Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    Debug.Log("Clicked on the buttons");
+                }
+                else {
+                    orbit = false;
+                    BoostController.setTimeAux(BoostController.getTotalTime());
+                    O2Controller.SetOrbitingO2Planet(false);
+                    speed = Mathf.Abs(speed);
+                    Debug.Log("<color=blue>SPACE PRESSED : </color>"  + direction + "<color=blue> Speed : </color>" + speed );
+                }
             }
             else{
                 Vector2 tempDirection;
