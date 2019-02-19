@@ -33,10 +33,12 @@ public class PauseMenu : MonoBehaviour {
         SceneManager.LoadScene("Menu");
     }
 
-    public void QuitGame()
+    public void Replay()
     {
-        Debug.Log("Quitting game");
-        Application.Quit();
+        Time.timeScale = 1;
+        pauseButton.SetActive(true);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     public void ZoomInOut() {
