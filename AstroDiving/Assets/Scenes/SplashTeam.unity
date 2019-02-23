@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b41f0a92efd4830a0cd20430955ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashScreen: Menu
+  splashScreenSceneName: Menu
 --- !u!4 &1166198427
 Transform:
   m_ObjectHideFlags: 0
